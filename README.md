@@ -19,12 +19,18 @@ Or install it yourself as:
     $ gem install smolt
 
 ## Usage
+'''ruby
+require 'smolt'
 
-    $ smolt {brew}
+Smolt.dependencies('openssl')
+'''
     
 This shows brews installed already and brews you need to install.
 
-    $ smolt {brew} -d
+'''ruby
+require 'smolt'
+
+Smolt.dependencies('openssl', '-d')
 
 This shows only brews you need to install.
 
