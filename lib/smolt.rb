@@ -4,11 +4,7 @@ require_relative "smolt/version"
 
 # Service to check the dependencies from the formula you want to install by homebrew
 module Smolt
-  def self.dependency(brew, opt: nil)
-    if opt
-      options = opt.split
-      opt_diff = options.any?(/-*d*/)
-    end
+  def self.full(brew)
     installed_brews = `brew list`.split("\n")
     dependent_brews = `brew deps #{brew}`.split("\n")
     diff_brews = dependent_brews - installed_brews
@@ -19,8 +15,18 @@ module Smolt
 
     return "#{brew} is already installed." unless installed_brews.grep(/#{brew}/).empty?
 
-    return puts formatted_diff if opt_diff
-
     puts formatted_full
+  end
+
+  def self.diff(brew)
+    installed_brews = `brew list`.split("\n")
+    dependent_brews = `brew deps #{brew}`.split("\n")
+    diff_brews = dependent_brews - installed_brews
+    divider = "-" * 50
+    formatted_diff = "#{divider}\nAdditional brews\n#{divider}\n#{diff_brews}"
+
+    return "#{brew} is already installed." unless installed_brews.grep(/#{brew}/).empty?
+
+    puts formatted_diff
   end
 end
