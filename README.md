@@ -21,19 +21,19 @@ Or install it yourself as:
 ## Usage
 ```ruby
 require 'smolt'
-
-Smolt.dependencies('openssl')
+Smolt.full('openssl')
 ```
-    
+
 This shows brews installed already and brews you need to install.
+If you installed the brew, Smolt return the message like "{brew} is already installed."
 
 ```ruby
-require 'smolt'
-
-Smolt.dependencies('openssl', '-d')
+require "smolt"
+Smolt.diff('openssl')
 ```
 
 This shows only brews you need to install.
+If you installed the brew, Smolt return the message like "{brew} is already installed."
 
 ## Development
 

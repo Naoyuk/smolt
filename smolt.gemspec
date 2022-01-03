@@ -3,19 +3,21 @@
 require_relative "lib/smolt/version"
 
 Gem::Specification.new do |spec|
+  spec.metadata = {
+    "rubygems_mfa_required" => "true"
+  }
   spec.name          = "smolt"
   spec.version       = Smolt::VERSION
   spec.authors       = ["Naoyuki Ishida"]
   spec.email         = ["39.ishida@gmail.com"]
 
   spec.summary       = "Smolt is dependency checker for the homebrew."
-  spec.description   = "You can check if there are any dependencies with the formula you're going to install before you do."
+  spec.description   = "You can check if there are any dependencies with the formula you're going to install."
   spec.homepage      = "https://rubygems.org/gems/smolt"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 2.4.0"
+  spec.required_ruby_version = ">= 2.6.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'https://mygemserver.com'"
-
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Naoyuk/smolt"
   spec.metadata["changelog_uri"] = "https://github.com/Naoyuk/smolt/blob/main/CHANGELOG.md"
