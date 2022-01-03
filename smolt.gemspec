@@ -3,9 +3,6 @@
 require_relative "lib/smolt/version"
 
 Gem::Specification.new do |spec|
-  spec.metadata = {
-    "rubygems_mfa_required" => "true"
-  }
   spec.name          = "smolt"
   spec.version       = Smolt::VERSION
   spec.authors       = ["Naoyuki Ishida"]
