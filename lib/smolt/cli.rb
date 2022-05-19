@@ -16,7 +16,7 @@ module Smolt
     def full(brew)
       brew_params(brew)
       @installed_brews.grep(/#{brew}/)
-      return "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
+      return puts "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
 
       puts @formatted_full
     end
@@ -24,7 +24,7 @@ module Smolt
     desc "diff Brew", "show differencies of dependencies"
     def diff(brew)
       brew_params(brew)
-      return "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
+      return puts "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
 
       puts @formatted_diff
     end
