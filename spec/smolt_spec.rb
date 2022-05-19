@@ -17,7 +17,7 @@ RSpec.describe Smolt do
         @divider = "-" * 50
       end
 
-      context "w/o any options" do
+      context "full method" do
         it "returns installed brews and additional brews" do
           formula = "D"
           installed_brews_mock = double(%w[A B C])
@@ -30,7 +30,7 @@ RSpec.describe Smolt do
         end
       end
 
-      context "w/ -d option" do
+      context "diff method" do
         it "returns additional brews" do
           formula = "C"
           diff_brews_mock = double(%w[D E])
