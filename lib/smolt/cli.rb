@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
-require_relative "../smolt"
+require "./lib/smolt"
+require "./lib/smolt/version"
 require "thor"
 
 module Smolt
   # Smolt's all methods
   class CLI < Thor
+    desc "version", "show smolt version"
+    def version
+      puts "smolt #{VERSION}"
+    end
+
     desc "full Brew", "show full dependencies"
     def full(brew)
       brew_params(brew)
