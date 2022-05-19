@@ -4,6 +4,10 @@ Smolt shows dependencies for homebrew.
 
 ## Installation
 
+### Using gem command
+    $ gem install smolt
+
+### Using Bundler
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -19,20 +23,14 @@ Or install it yourself as:
     $ gem install smolt
 
 ## Usage
-```ruby
-require 'smolt'
-Smolt.full('openssl')
-```
+    $ smolt full {brew package name}
 
-This shows brews installed already and brews you need to install.
+This shows dependencies of the brew is given as an argument.
 If you installed the brew, Smolt return the message like "{brew} is already installed."
 
-```ruby
-require "smolt"
-Smolt.diff('openssl')
-```
+    $ smolt diff {brew package name}
 
-This shows only brews you need to install.
+This shows brews brews you need to install the brew is given as an argument.
 If you installed the brew, Smolt return the message like "{brew} is already installed."
 
 ## Development
