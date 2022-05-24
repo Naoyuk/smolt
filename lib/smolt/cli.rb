@@ -3,6 +3,10 @@
 require "./lib/smolt"
 require "./lib/smolt/version"
 require "thor"
+require "uri"
+require "net/http"
+require "json"
+require "byebug"
 
 module Smolt
   # Smolt's all methods
@@ -12,34 +16,37 @@ module Smolt
       puts "smolt #{VERSION}"
     end
 
-    desc "full Brew", "show full dependencies"
-    def full(brew)
-      brew_params(brew)
-      @installed_brews.grep(/#{brew}/)
-      return puts "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
-
-      puts @formatted_full
-    end
-
-    desc "diff Brew", "show differencies of dependencies"
-    def diff(brew)
-      brew_params(brew)
-      return puts "#{brew} is already installed." unless @installed_brews.grep(/#{brew}/).empty?
-
-      puts @formatted_diff
+    desc "diff deps", "return differencies of dependencies"
+    def diff(formula)
+      puts brew_deps(formula)
     end
 
     private
 
-    def brew_params(brew)
-      @brew = brew
-      @installed_brews = `brew list`.split("\n")
-      dependent_brews = `brew deps #{@brew}`.split("\n")
-      diff_brews = dependent_brews - @installed_brews
-      divider = "-" * 50
-      formatted_installed = "#{divider}\nInstalled brews\n#{divider}\n#{@installed_brews}\n"
-      @formatted_diff = "#{divider}\nAdditional brews\n#{divider}\n#{diff_brews}"
-      @formatted_full = "#{formatted_installed}\n#{@formatted_diff}"
+    def brew_deps(formula)
+      installed = brew_list
+      deps_array = fetch_deps(formula)
+      deps = []
+      deps_array.each do |f|
+        deps << f unless installed.include?(f)
+      end
+      if deps.empty?
+        deps = "#{formula} does not require any additional dependencies."
+      else
+        deps = ":::Differencies of dependencies:::\n" + deps.to_s
+      end
+      
+      return deps
+    end
+
+    def fetch_deps(formula)
+      uri = URI("https://formulae.brew.sh/api/formula/#{formula}.json")
+      res = Net::HTTP.get_response(uri)
+      JSON.parse(res.body)['dependencies'] if res.is_a?(Net::HTTPSuccess)
+    end
+
+    def brew_list
+      `brew list`.split("\n")
     end
   end
 end
