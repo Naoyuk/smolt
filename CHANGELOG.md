@@ -34,4 +34,13 @@ usage
 
 ## [0.3.3] - 2022-05-19
 ### Fixed
-- Show message like '{berw} is already installed.`
+- Show message like `{berw} is already installed.`
+
+## [0.4.0] - 2022-05-24
+### Change
+- the word 'brew' to 'formula'
+
+### Removed
+- Show message like `{formula} is already installed.`
+- Pattern like 'the formula is already installed'. Because 'does not require any dependencies covers it'
+- Method `full`. Because you can find out formulas already installed by `brew list` command
