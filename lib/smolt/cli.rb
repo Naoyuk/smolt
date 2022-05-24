@@ -27,9 +27,7 @@ module Smolt
       installed = brew_list
       deps_array = fetch_deps(formula)
       deps = []
-      deps_array.each do |f|
-        deps << f unless installed.include?(f)
-      end
+      deps_array.each { |f| deps << f unless installed.include?(f) }
       if deps.empty?
         "#{formula} does not require any additional dependencies."
       else
