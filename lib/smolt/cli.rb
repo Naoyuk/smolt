@@ -27,22 +27,18 @@ module Smolt
       installed = brew_list
       deps_array = fetch_deps(formula)
       deps = []
-      deps_array.each do |f|
-        deps << f unless installed.include?(f)
-      end
+      deps_array.each { |f| deps << f unless installed.include?(f) }
       if deps.empty?
-        deps = "#{formula} does not require any additional dependencies."
+        "#{formula} does not require any additional dependencies."
       else
-        deps = ":::Differencies of dependencies:::\n" + deps.to_s
+        ":::Differencies of dependencies:::\n#{deps}"
       end
-      
-      return deps
     end
 
     def fetch_deps(formula)
       uri = URI("https://formulae.brew.sh/api/formula/#{formula}.json")
       res = Net::HTTP.get_response(uri)
-      JSON.parse(res.body)['dependencies'] if res.is_a?(Net::HTTPSuccess)
+      JSON.parse(res.body)["dependencies"] if res.is_a?(Net::HTTPSuccess)
     end
 
     def brew_list
