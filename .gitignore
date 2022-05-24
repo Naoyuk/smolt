@@ -29,3 +29,6 @@ Gemfile.lock
 
 # Session
 Session.vim
+
+# Byebug history
+.byebug_history
