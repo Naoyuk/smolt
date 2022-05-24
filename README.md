@@ -23,15 +23,10 @@ Or install it yourself as:
     $ gem install smolt
 
 ## Usage
-    $ smolt full {brew package name}
+    $ smolt diff {formula}
 
-This shows dependencies of the brew is given as an argument.
-If you installed the brew, Smolt return the message like "{brew} is already installed."
-
-    $ smolt diff {brew package name}
-
-This shows brews brews you need to install the brew is given as an argument.
-If you installed the brew, Smolt return the message like "{brew} is already installed."
+This will show any additional dependent packages that need to be installed in order to install the package given in the argument.
+If you don't need any additional packeges, Smolt returns the message like "{formula} does not require any additional dependencies."
 
 ## Development
 
