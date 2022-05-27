@@ -2,6 +2,6 @@
 
 # frozen_string_literal: true
 
-require "./lib/smolt"
+require "smolt"
 
 Smolt::CLI.start
