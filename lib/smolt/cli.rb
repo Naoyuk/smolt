@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "./lib/smolt"
-require "./lib/smolt/version"
+require "smolt"
+require "smolt/version"
 require "thor"
 require "uri"
 require "net/http"
