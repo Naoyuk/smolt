@@ -48,3 +48,8 @@ usage
 ## [0.4.1] - 2022-05-26
 ### Change
 - path for `require` in exe/smolt
+
+## [0.4.2] - 2022-05-27
+### Change
+- path for `require` in lib/smolt.rb
+- path for `require` in lib/smolt/cli.rb
