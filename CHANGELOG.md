@@ -44,3 +44,7 @@ usage
 - Show message like `{formula} is already installed.`
 - Pattern like 'the formula is already installed'. Because 'does not require any dependencies covers it'
 - Method `full`. Because you can find out formulas already installed by `brew list` command
+
+## [0.4.1] - 2022-05-26
+### Change
+- path for `require` in exe/smolt
