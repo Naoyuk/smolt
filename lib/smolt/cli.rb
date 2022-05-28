@@ -27,11 +27,15 @@ module Smolt
       installed = brew_list
       deps_array = fetch_deps(formula)
       deps = []
-      deps_array.each { |f| deps << f unless installed.include?(f) }
-      if deps.empty?
-        "#{formula} does not require any additional dependencies."
-      else
-        ":::Differencies of dependencies:::\n#{deps}"
+      begin
+        deps_array.each { |f| deps << f unless installed.include?(f) }
+        if deps.empty?
+          "#{formula} does not require any additional dependencies."
+        else
+          ":::Differencies of dependencies:::\n#{deps}"
+        end
+      rescue NoMethodError
+        "#{formula} is not found."
       end
     end
 

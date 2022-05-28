@@ -56,6 +56,19 @@ RSpec.describe Smolt do
           expect { smolt.diff("formula") }.to output(message).to_stdout
         end
       end
+
+      context "when the formula is not found" do
+        it "returns message like 'formula is not found'" do
+          deps_array_mock = nil
+
+          allow(smolt).to receive(:brew_list).and_return(brew_list_mock)
+          allow(smolt).to receive(:fetch_deps).and_return(deps_array_mock)
+
+          message = "formula is not found.\n"
+
+          expect { smolt.diff("formula") }.to output(message).to_stdout
+        end
+      end
     end
   end
 end
