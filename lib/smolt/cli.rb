@@ -29,11 +29,8 @@ module Smolt
       deps = []
       begin
         deps_array.each { |f| deps << f unless installed.include?(f) }
-        if deps.empty?
-          "#{formula} does not require any additional dependencies."
-        else
-          ":::Differencies of dependencies:::\n#{deps}"
-        end
+        no_deps = "#{formula} does not require any additional dependencies."
+        deps.empty? ? no_deps : ":::Differencies of dependencies:::\n#{deps}"
       rescue NoMethodError
         "#{formula} is not found."
       end

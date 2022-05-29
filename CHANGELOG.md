@@ -53,3 +53,11 @@ usage
 ### Change
 - path for `require` in lib/smolt.rb
 - path for `require` in lib/smolt/cli.rb
+
+## [0.4.3] - 2022-05-28
+### Fixed
+- the error that is shown when the formula is not found
+
+## [0.4.4] - 2022-05-28
+### Fixed
+- too many lines in `brew_deps`method

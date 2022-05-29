@@ -26,7 +26,10 @@ Or install it yourself as:
     $ smolt diff {formula}
 
 This will show any additional dependent packages that need to be installed in order to install the package given in the argument.
+
 If you don't need any additional packeges, Smolt returns the message like "{formula} does not require any additional dependencies."
+
+Smolt returns "{formula} is not found.", when the formula specified as an argumant is not found in homebrew.
 
 ## Development
 
